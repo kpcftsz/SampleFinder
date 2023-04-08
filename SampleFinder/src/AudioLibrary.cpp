@@ -281,20 +281,16 @@ namespace finder
 		}
 
 		// Prioritize confidence over offsets
-		std::sort(
-			songs_result.begin(),
-			songs_result.end(),
-			[](const FoundSong& a, const FoundSong& b)
-			{
-				if (a.overall_confidence > b.overall_confidence) return true;
-				if (b.overall_confidence > a.overall_confidence) return false;
+		std::sort(songs_result.begin(), songs_result.end(), [](const FoundSong& a, const FoundSong& b)
+		{
+			if (a.overall_confidence > b.overall_confidence) return true;
+			if (b.overall_confidence > a.overall_confidence) return false;
 
-				if (a.offset > b.offset) return true;
-				if (b.offset > a.offset) return false;
+			if (a.offset > b.offset) return true;
+			if (b.offset > a.offset) return false;
 
-				return false;
-			}
-		);
+			return false;
+		});
 	}
 
 	/*

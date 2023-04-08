@@ -41,7 +41,7 @@ Once you have everything, you should just be able to open the .sln in Visual Stu
 
 If you're using a Debian-based distro, run this to install the packages you'll probably need:
 
-`sudo apt-get install libsdl2-dev libsdl2-mixer-dev libglew-dev libsndfile-dev libopencv-dev`
+`sudo apt-get install libboost-dev libsdl2-dev libsdl2-mixer-dev libglew-dev libsndfile-dev libopencv-dev`
 
 If you're using something else just install the equivalent packages for all the dependencies listed above.
 

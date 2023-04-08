@@ -111,36 +111,32 @@ namespace
 	{
 		// Sorting
 		// https://stackoverflow.com/questions/279854/how-do-i-sort-a-vector-of-pairs-based-on-the-second-element-of-the-pair
-		std::sort(
-			v_in.begin(),
-			v_in.end(),
-			[](auto& left, auto& right)
-			{
-				if (left.second == right.second)
-					return left.first < right.first;
-				return left.second < right.second;
-			}
-		);
+		std::sort(v_in.begin(), v_in.end(), [](auto& left, auto& right)
+		{
+			if (left.second == right.second)
+				return left.first < right.first;
+			return left.second < right.second;
+		});
 		for (int i = 0; i < v_in.size(); i++)
 		{
 			for (int j = 1; j < finder::settings.default_fan_value; j++)
 			{
-				if ((i + j) < v_in.size())
-				{
-					int freq1 = v_in[i].first;
-					int freq2 = v_in[i + j].first;
-					int time1 = v_in[i].second;
-					int time2 = v_in[i + j].second;
-					int t_delta = time2 - time1;
-					if ((t_delta >= finder::settings.min_hash_time_delta) && (t_delta <= finder::settings.max_hash_time_delta))
-					{
-						char buffer[100];
-						snprintf(buffer, sizeof(buffer), "%d|%d|%d", freq1, freq2, t_delta);
-						std::string to_be_hashed = buffer;
-						std::string hash_result = GetSHA1(to_be_hashed).erase(finder::settings.fingerprint_reduction, 40);
+				if (i + j >= v_in.size())
+					continue;
 
-						out.emplace(hash_result, time1);
-					}
+				int freq1 = v_in[i].first;
+				int freq2 = v_in[i + j].first;
+				int time1 = v_in[i].second;
+				int time2 = v_in[i + j].second;
+				int t_delta = time2 - time1;
+				if ((t_delta >= finder::settings.min_hash_time_delta) && (t_delta <= finder::settings.max_hash_time_delta))
+				{
+					char buffer[100];
+					snprintf(buffer, sizeof(buffer), "%d|%d|%d", freq1, freq2, t_delta);
+					std::string to_be_hashed = buffer;
+					std::string hash_result = GetSHA1(to_be_hashed).erase(finder::settings.fingerprint_reduction, 40);
+
+					out.emplace(hash_result, time1);
 				}
 			}
 		}
