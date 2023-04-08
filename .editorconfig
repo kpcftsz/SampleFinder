@@ -1,0 +1,7 @@
+[*]
+insert_final_newline = true
+
+[*.{c,cpp,cc,h,hpp,hh,s,pl}]
+indent_style = tab
+indent_size = 4
+

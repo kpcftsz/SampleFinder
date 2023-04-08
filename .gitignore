@@ -1,0 +1,52 @@
+# Image thumbnail files created by Windows
+Thumbs.db
+
+# Finder view option files created by OS X
+.DS_Store
+
+# DLLs/EXEs
+x64/Debug/
+x64/Release/
+Debug/
+Release/
+
+# Dependencies
+SampleFinder/extlibs/
+
+# Test songs
+SampleFinder/songs/
+
+# Visual Studio output
+/bin/
+/build/
+
+# Visual Studio projects
+*.ipch
+*.opensdf
+*.sdf
+*.suo
+*.vcxproj.user
+*.vcxproj.filters
+*.vcxproj
+*.sln
+*.tlog
+*.VC.opendb
+*.VC.db
+.vs/
+
+# JetBrains projects
+/.idea/
+
+# KDevelop projects
+*.kdev4
+
+# Vim swapfiles
+*.swp
+
+# Emacs files
+\#*\#
+.\#*
+
+# JOE backups
+DEADJOE
+*~
