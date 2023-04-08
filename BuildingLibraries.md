@@ -48,7 +48,7 @@ This will batch convert everything in the directory to a .wav file and place it 
 
 Open SampleFinder, and in the bottom left "Library" window, press "Browse" and navigate to the "out" folder you made and populated in the previous step.
 
-Now you can import a sample using "File" > "Open Sample...", hit "Process" on your library (might be good to make sure "Store Fingerprints" is checked in the "Options" window), then "Scan" to start searching!
+Now you can import a sample using "File" > "Open Sample...", hit "Process" on your library, then "Scan" to start searching! I suggest saving your library afterwards as well to save from having to re-process everything.
 
 ## Notes
 
