@@ -216,20 +216,15 @@ namespace finder
 		short* stereo_datai = new short[n_samples];
 		sample_data.resize(n_frames);
 
-		// sf_count_t n_read = sf_readf_float(sf_in, stereo_data, n_frames);
 		sf_count_t n_read = sf_readf_short(sf_in, stereo_datai, n_frames);
 		if (n_read == 0) // != n_frames)
 		{
 			std::cerr << "Error reading data from audio file: " << sf_strerror(sf_in) << std::endl;
 			return FAILURE;
 		}
-		std::cout << "Loaded audio with " << n_samples << " samples into memory" << std::endl;
-
 		sf_close(sf_in);
 
 		length = n_frames / fs;
-
-		loaded = true;
 
 		// Convert data to mono
 		for (int i = 0; i < n_frames; i++)
@@ -241,6 +236,8 @@ namespace finder
 			sample_data[i] = v;// * (1.0f / 65536.0f);
 		}
 		delete[] stereo_datai;
+
+		loaded = true;
 
 		return SUCCESS;
 	}

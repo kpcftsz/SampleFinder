@@ -1,1 +1,1 @@
-{"default_amp_min":10.0,"default_fan_value":15,"default_overlap_ratio":0.5,"default_window_size":4096,"demote_songs":true,"demotion_factor":2.0,"fingerprint_reduction":20,"fs":44100.0,"max_hash_time_delta":200,"min_hash_time_delta":0,"peak_neighborhood_size":10,"stored_fingerprints":true}
+{"default_amp_min":10.0,"default_fan_value":15,"default_overlap_ratio":0.5,"default_window_size":4096,"demote_songs":true,"demotion_factor":2.0,"fingerprint_reduction":20,"fs":44100.0,"max_hash_time_delta":200,"min_hash_time_delta":0,"peak_neighborhood_size":10}

@@ -181,15 +181,18 @@ namespace finder
 		}
 
 		// Windows
-		RenderLibrary();
-		RenderMissingSample();
-		RenderMatches();
-		if (m_show_about_window)
-			RenderAboutScreen();
-		if (m_show_library_stats)
-			RenderLibraryStats();
-		if (m_show_settings_window)
-			RenderSettings();
+		if (!m_library.loading)
+		{
+			RenderLibrary();
+			RenderMissingSample();
+			RenderMatches();
+			if (m_show_about_window)
+				RenderAboutScreen();
+			if (m_show_library_stats)
+				RenderLibraryStats();
+			if (m_show_settings_window)
+				RenderSettings();
+		}
 
 		// Loading screen
 		if (m_library.loading)
@@ -282,19 +285,16 @@ namespace finder
 			}
 			if (ImGui::BeginChild("##library_children"))
 			{
-				if (!m_library.loading)
+				for (AudioFile& file: m_library.files)
 				{
-					for (AudioFile& file: m_library.files)
-					{
-						std::string filename = std::filesystem::proximate(file.path, m_library_path).string();
+					std::string filename = std::filesystem::proximate(file.path, m_library_path).string();
 
-						int c = file.processed;
-						if (c)
-							ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 0, 255));
-						ImGui::Text(filename.c_str());
-						ImGui::PopStyleColor(c);
-						ImGui::Separator();
-					}
+					int c = file.processed;
+					if (c)
+						ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 0, 255));
+					ImGui::Text(filename.c_str());
+					ImGui::PopStyleColor(c);
+					ImGui::Separator();
 				}
 				ImGui::EndChild();
 			}

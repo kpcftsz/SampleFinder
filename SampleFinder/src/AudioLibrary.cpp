@@ -36,6 +36,12 @@ namespace finder
 	{
 		loading = true;
 
+		// Reset state
+		files.clear();
+		fingerprints.clear();
+		matches.clear();
+		cached_fps_present = false;
+
 		// Check and see if there's a library file available. If there is we'll load cached fingerprints from it and skip them
 		// during the processing phase.
 		library_path = path;
@@ -134,13 +140,16 @@ namespace finder
 		{
 			std::for_each(std::execution::par, files.begin(), files.end(), [&](AudioFile& file)
 			{
-				if (!file.processed || force)
+				bool should_proc = !file.processed || force;
+				if (should_proc)
 					file.Process();
 				std::unique_lock<std::mutex> lck(mutex);
 				load_min++;
 				if (load_min == files.size())
 					loading = false;
-				fingerprints.push_back(&file.fingerprint);
+				// Should really revisit this whole thing soon... kinda ugly
+				if (should_proc)
+					fingerprints.push_back(&file.fingerprint);
 			});
 		});
 		processing_thread.detach();
