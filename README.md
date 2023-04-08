@@ -20,11 +20,8 @@ Grab a build off the releases page on GitHub or from my website.
 2. Run **SampleFinder.exe**
 3. Import your audio library, and you're all set!
 
-## Building from source
+## Building prerequisites
 
-I'm not using a fancy build system for this, the process isn't super straight-forward, but here's the gist.
-
-Prerequisites:
 - C++ compiler with support for C++17
 - Boost (1.81.0+)
 - SDL2 (2.26.2+)
@@ -32,10 +29,6 @@ Prerequisites:
 - SDL_mixer (2.6.2+)
 - OpenCV (4.7.0+)
 - libsndfile (1.2.0+)
-
-Includes and .lib files for these are included in the repo (besides Boost), but the .dll files you'll have to grab separately.
-
-Once you have everything, you should just be able to open the .sln in Visual Studio 2019 or newer. If it doesn't immediately work you might have to mess with your include/library search paths, and double check to make sure your .dll files are in the right place.
 
 ### On Linux
 
